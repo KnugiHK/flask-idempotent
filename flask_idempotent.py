@@ -1,7 +1,6 @@
 import uuid
 import threading
 from datetime import datetime, timedelta
-import copy
 import six
 from flask import _request_ctx_stack, request, abort, wrappers
 from jinja2 import Markup
@@ -20,7 +19,7 @@ class Key(object):
 class KeyStore(object):
     def __init__(self, app):
         super(KeyStore, self).__init__()
-        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9) #  Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
+        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9)  # Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
         self.collection = {}
         self.last_cleanup = datetime.now()
 
@@ -31,7 +30,7 @@ class KeyStore(object):
         return False
 
     def get(self, key):
-        #  Clean up the expired key first to free memory
+        # Clean up the expired key first to free memory
         delete_time = datetime.now()
         if self.last_cleanup + self.interval < delete_time:
             self.clean(delete_time)
