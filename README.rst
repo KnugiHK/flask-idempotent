@@ -3,6 +3,10 @@ Flask-Idempotent
 ****************
 -----
 
+.. image:: https://github.com/KnugiHK/flask-idempotent-memory/workflows/Python%20package/badge.svg
+    :target: https://github.com/KnugiHK/flask-idempotent-memory/actions
+    :alt: Build
+
 This fork is part of `self-host video streaming project <https://github.com/users/KnugiHK/projects/3>`_.
 
 -----
