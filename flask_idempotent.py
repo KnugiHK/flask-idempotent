@@ -26,7 +26,7 @@ class KeyStore(object):
         if not isinstance(key, str):
             raise TypeError('Argument "key" must be a string but %s was given' % type(key))
         self.collection[key] = Key(expiry, response)
-        return False, "adasds"
+        return False
         
     def get(self, key):
         #Clean up the expired key first to free memery
