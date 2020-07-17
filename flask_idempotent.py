@@ -63,7 +63,7 @@ class Idempotent(object):
     def init_app(self, app):
         self.app = app
         app.config.setdefault("IDEMPOTENT_TIMEOUT", 10)
-        app.config.setdefault("IDEMPOTENT_EXPIRE", 5)
+        app.config.setdefault("IDEMPOTENT_EXPIRE", 240)
 
         @app.context_processor
         def template_context():
