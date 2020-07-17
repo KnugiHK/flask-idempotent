@@ -1,9 +1,6 @@
 ****************
 Flask-Idempotent
 ****************
-
-|pypi| |build| |coverage|
-
 -----
 
 Flask-Idempotent is an exceedingly simple (by design) idempotent request handler for Flask. Implemented as an extension. The original repo is using Redis as both a lock and response datastore, instead, this repo simply using memory (a dictionary variable and a new class) for even higher speed and super ease of use, this will help you add idempotency to any endpoint on your Flask application with just a few click.
