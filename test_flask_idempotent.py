@@ -13,12 +13,10 @@ from flask_idempotent import Idempotent
 app = Flask(__name__)
 idempotent = Idempotent(app)
 
-
 @app.route("/", methods=['GET', 'POST'])
 def handler():
     time.sleep(1)
     return uuid.uuid4().hex
-
 
 class TestIdempotent(unittest2.TestCase):
     server = None
@@ -50,7 +48,6 @@ class TestIdempotent(unittest2.TestCase):
 
         def get_result(key):
             return lambda idx: requests.post("http://localhost:5000/", headers={'X-Idempotent-Key': key}).text
-
         pool = multiprocessing.pool.ThreadPool(8)
         map_1 = pool.map_async(get_result(key1), range(4))
         map_2 = pool.map_async(get_result(key2), range(4))
