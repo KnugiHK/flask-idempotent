@@ -75,11 +75,3 @@ Flask-Idempotent requires Redis to function. It defaults to using redis on the l
 .. |pypi| image:: https://img.shields.io/pypi/v/flask-idempotent.svg?style=flat-square&label=latest%20version
     :target: https://pypi.python.org/pypi/flask-idempotent
     :alt: Latest version released on PyPi
-
-.. |coverage| image:: https://img.shields.io/coveralls/DisruptiveLabs/flask-idempotent/master.svg?style=flat-square
-    :target: https://coveralls.io/r/DisruptiveLabs/flask-idempotent?branch=master
-    :alt: Test coverage
-
-.. |build| image:: https://img.shields.io/travis/DisruptiveLabs/flask-idempotent/master.svg?style=flat-square&label=build
-    :target: https://travis-ci.org/DisruptiveLabs/flask-idempotent
-    :alt: Build status of the master branch
