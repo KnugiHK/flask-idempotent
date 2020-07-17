@@ -6,30 +6,32 @@ import six
 from flask import _request_ctx_stack, request, abort, wrappers
 from jinja2 import Markup
 
+
 class Key(object):
     def __init__(self, expiry, response):
         if not isinstance(expiry, int):
             raise TypeError('Argument "expiry" must be a string but %s was given' % type(expiry))
         if not isinstance(response, bytes) and not isinstance(response, wrappers.Response):
-            raise TypeError('Argument "response" must be a Flask Response object or processing byte but %s was given' % type(response))
+            raise TypeError('Argument "response" must be a Flask Response object or byte but %s was given' % type(response))
         self.expiry = datetime.now() + timedelta(seconds=expiry)
         self.response = response
+
 
 class KeyStore(object):
     def __init__(self, app):
         super(KeyStore, self).__init__()
-        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9) #Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
+        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9) #  Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
         self.collection = {}
         self.last_cleanup = datetime.now()
-    
+
     def set(self, key, expiry, response):
         if not isinstance(key, str):
             raise TypeError('Argument "key" must be a string but %s was given' % type(key))
         self.collection[key] = Key(expiry, response)
         return False
-        
+
     def get(self, key):
-        #Clean up the expired key first to free memory
+        #  Clean up the expired key first to free memory
         delete_time = datetime.now()
         if self.last_cleanup + self.interval < delete_time:
             self.clean(delete_time)
@@ -38,7 +40,7 @@ class KeyStore(object):
             return self.collection[key]
         else:
             return None
-    
+
     def clean(self, delete_time):
         def func():
             to_be_deleted = []
@@ -49,6 +51,7 @@ class KeyStore(object):
                 self.collection.pop(k)
         t = threading.Thread(target=func)
         t.start()
+
 
 class Idempotent(object):
     _PROCESSING = b'__IDEMPOTENT_PROCESSING' if six.PY3 else '__IDEMPOTENT_PROCESSING'
