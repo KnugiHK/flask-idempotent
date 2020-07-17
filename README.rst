@@ -61,6 +61,7 @@ Configuration
 Flask-Idempotent requires Redis to function. It defaults to using redis on the local machine, and the following configuration values are available. Just set them in your flask configuration
 
 .. code-block:: python
+
     # In seconds, the timeout for a secondary request to wait for the first to
     #  complete
     IDEMPOTENT_TIMEOUT = 60
