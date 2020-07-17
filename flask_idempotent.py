@@ -29,7 +29,7 @@ class KeyStore(object):
         return False
         
     def get(self, key):
-        #Clean up the expired key first to free memery
+        #Clean up the expired key first to free memory
         delete_time = datetime.now()
         if self.last_cleanup + self.interval < delete_time:
             self.clean(delete_time)
@@ -118,6 +118,6 @@ class Idempotent(object):
     def _after_request(self, response):
         if hasattr(_request_ctx_stack.top, '__idempotent_key'):
             key = getattr(_request_ctx_stack.top, '__idempotent_key')
-            # Save the request in memery, notify, then return
+            # Save the request in memory, notify, then return
             self.key_collection.set(key, self.app.config.get('IDEMPOTENT_EXPIRE'), response)
         return response
