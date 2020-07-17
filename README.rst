@@ -69,9 +69,3 @@ Flask-Idempotent requires Redis to function. It defaults to using redis on the l
     # In seconds, the amount of time to store the master response before
     #  expiration in key store
     IDEMPOTENT_EXPIRE = 240
-
-
-
-.. |pypi| image:: https://img.shields.io/pypi/v/flask-idempotent.svg?style=flat-square&label=latest%20version
-    :target: https://pypi.python.org/pypi/flask-idempotent
-    :alt: Latest version released on PyPi
