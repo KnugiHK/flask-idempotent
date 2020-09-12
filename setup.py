@@ -1,12 +1,5 @@
 from setuptools import setup
 
-TEST_DEPS = [
-    'coverage',
-    'nose',
-    'requests',
-    'unittest2'
-]
-
 with open("README.rst") as d:
     __doc__ = d.read()
 
@@ -22,13 +15,12 @@ setup(
     py_modules=['flask_idempotent'],
     zip_safe=False,
     include_package_data=True,
-    platforms='any',
     install_requires=[
         'Flask>=0.9'
     ],
-    tests_require=TEST_DEPS,
-    extras_require={'tests': TEST_DEPS},
-    test_suite='nose.collector',
+    long_description_content_type='text/markdown',
+    keywords=['flask', 'api', "memory", "idempotent"],
+    platforms='any',
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
