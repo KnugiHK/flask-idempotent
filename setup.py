@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open("README.rst") as d:
+with open("README.md") as d:
     __doc__ = d.read()
 
 setup(
     name='Flask-Idempotent-Memory',
-    version='0.1.1',
+    version='0.1.2',
     url='https://github.com/KnugiHK/flask-idempotent-memory',
     license='MIT',
     author='Knugi (originally Flask-Idempotent by Franklyn Tackitt)',
