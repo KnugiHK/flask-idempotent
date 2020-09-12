@@ -18,8 +18,8 @@ class Key(object):
 
 class KeyStore(object):
     def __init__(self, app):
-        super(KeyStore, self).__init__()
-        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9)  # Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
+        # Clean up interval = Expiry * 1.9 (Just in case some keys are being renew)
+        self.interval = timedelta(seconds=app.config.get('IDEMPOTENT_EXPIRE') * 1.9)
         self.collection = {}
         self.last_cleanup = datetime.now()
 
