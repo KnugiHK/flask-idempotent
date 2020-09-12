@@ -13,7 +13,7 @@ Flask-Idempotent is an exceedingly simple (by design) idempotent request handler
 
 
 ```shell
-$ pip install flask-idempotent-memory #(Not yet available)
+$ pip install flask-idempotent-memory
 ```
 
 # Usage
