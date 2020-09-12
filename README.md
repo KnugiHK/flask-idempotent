@@ -20,7 +20,7 @@ $ pip install flask-idempotent-memory
 
 ```python
 from flask import Flask
-from flask_idempotent-memory import Idempotent
+from flask_idempotent import Idempotent
 my_app = Flask(__name__)
 Idempotent(my_app)
 ```
